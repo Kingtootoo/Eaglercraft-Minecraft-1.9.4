@@ -1,0 +1,16 @@
+{
+  "recipes": [
+    {
+      "output": "shield",
+      "pattern": [
+        " I ",
+        " S ",
+        " S "
+      ],
+      "ingredients": {
+        "I": "iron_ingot",
+        "S": "wooden_planks"
+      }
+    }
+  ]
+}

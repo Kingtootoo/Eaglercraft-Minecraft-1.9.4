@@ -23,8 +23,3 @@ function loadShieldTextures() {
   shieldTexture.onload = function() {
     console.log("Shield texture loaded");
   };
-
-  shieldBlockTexture.onload = function() {
-    console.log("Shield blocking texture loaded");
-  };
-}

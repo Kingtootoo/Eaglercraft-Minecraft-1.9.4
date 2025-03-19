@@ -3,16 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eaglercraft 1.9.4 - Online</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Eaglercraft 1.9.4 Online</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+    canvas {
+      display: block;
+      margin: auto;
+      background-color: transparent;
+    }
+  </style>
 </head>
 <body>
   <canvas id="gameCanvas"></canvas>
-  <script src="libs/three.min.js"></script> <!-- if you're using Three.js for rendering -->
-  <script src="eaglercraft.js"></script>
-  <script src="minecraft-shields.js"></script>
-  <script src="game.js"></script>
-  <script src="player.js"></script>
-  <script src="networking.js"></script>
+  <script>
+    // Setup the canvas
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Set canvas size to full screen
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Game variables
+    var shieldTexture, shieldBlockTexture;
+    var equippedShield = false;
+    var isBlocking = false;
+
+    // Load shield textures
+    function loadShieldTextures() {
+      shieldTexture = new Image();
+      shieldTexture.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...'; // Base64 encoded image for shield.png
+
+      shieldBlockTexture = new Image();
+      shieldBlockTexture.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...'; // Base64 encoded image for shield_block.png
+
+      shieldTexture.onload = function() {
+        console.log("Shield texture loaded");
+      };
+      shieldBlockTexture.onload = function() {
+        console.log("Shield blocking texture loaded");
+      };
+    }
+
+    // Load textures
+    loadShieldTextures();
+
+    // Render shield
+    function renderShield() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+      if (equippedShield) {
+        if (isBlocking) {
+          ctx.drawImage(shieldBlockTexture, canvas.width / 2 - 25, canvas.height / 2 - 40, 50, 80);
+        } else {
+          ctx.drawImage(shieldTexture, canvas.width / 2 - 25, canvas.height / 2 - 40, 50, 80);
+        }
+      }
+    }
+
+    // Game loop
+    function gameLoop() {
+      renderShield();
+      requestAnimationFrame(gameLoop); // Repeat the game loop
+    }
+
+    // Start the game loop
+    gameLoop();
+
+    // Example of equipping the shield after 3 seconds
+    setTimeout(() => {
+      equippedShield = true;
+      console.log("Shield equipped");
+    }, 3000);
+
+    // Example of toggling block after 6 seconds
+    setTimeout(() => {
+      isBlocking = !isBlocking;
+      console.log(isBlocking ? "Shield blocking" : "Shield not blocking");
+    }, 6000);
+
+  </script>
 </body>
 </html>

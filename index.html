@@ -6,43 +6,17 @@
     <title>Eaglercraft 1.9.4</title>
     <style>
         body {
-            background: url('background.png') no-repeat center center fixed;
-            background-size: cover;
-            text-align: center;
-            color: white;
-            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
         }
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        h1 {
-            font-size: 2em;
-        }
-        .button {
-            display: block;
-            margin: 10px auto;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            color: white;
-            background: #333;
+        iframe {
+            width: 100vw;
+            height: 100vh;
             border: none;
-            cursor: pointer;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .button:hover {
-            background: #555;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Eaglercraft 1.9.4 - Lambda Edition</h1>
-        <a class="button" href="https://default-multiplayer-server.com">Play Online</a>
-        <a class="button" href="./offline.html">Play Offline</a>
-    </div>
+    <iframe src="./game.html"></iframe>
 </body>
 </html>
